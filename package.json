@@ -1,7 +1,7 @@
 {
-	"name": "mongodb",
+	"name": "url-shortener-microservice",
 	"version": "0.0.1",
-	"description": "Example app interacting with MongoDB",
+	"description": "Backend microservice that creates and stores a stortened url that can be used as an alias for the full URL",
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js"
@@ -13,6 +13,9 @@
 	},
 	"engines": {
 		"node": "4.4.5"
+	},
+	"repository": {
+		"url": "https://github.com/dickyw71/url-shortener-microservice"
 	},
 	"keywords": [
 		"node",
