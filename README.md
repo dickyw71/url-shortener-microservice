@@ -7,12 +7,14 @@
 * User Story: When I visit that shortened URL, it will redirect me to my original link.
 
 
-- Pass URL as a parameter to Express Router
-
-- Validate original URL parameter
-- create random key value for original URL
-- insert key and URL value into MongoDb
-- return JSON with original URL and shortened URL 
+- Pass URL as a parameter to Express Router - DONE
+- Validate original URL parameter - DONE
+- Check is the URL is aready in the DB?
+- If found return info from DB in JSON
+- else
+    - create random key value for original URL - DONE
+    - insert key and URL value into MongoDb
+    - return JSON with original URL and shortened URL 
 
     { 
     "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" 
