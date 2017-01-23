@@ -12,7 +12,7 @@
 		"valid-url": "^1.0.9"
 	},
 	"engines": {
-		"node": "4.4.5"
+		"node": "6.9.4"
 	},
 	"repository": {
 		"url": "https://github.com/dickyw71/url-shortener-microservice"
