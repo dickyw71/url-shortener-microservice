@@ -10,7 +10,7 @@
 - Pass URL as a parameter to Express Router - DONE
 - Validate original URL parameter - DONE
 - Check is the URL is aready in the DB?
-- If found return info from DB in JSON
+- If found return info from DB in JSON - DONE
 - else
     - create random key value for original URL - DONE
     - insert key and URL value into MongoDb
