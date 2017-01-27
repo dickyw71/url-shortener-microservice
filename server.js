@@ -64,7 +64,9 @@ app.get("/new/:protocol://:address", (request, response) => {
                 }
                 else {
                   shortenedUrls.insert(urlShortenerSvc(origUrl), function(err, result) {
-                      console.log(result);
+                    if(err) throw err;
+              
+                    console.log(result);
                   });
 
                   db.close(function(err) {
@@ -75,6 +77,7 @@ app.get("/new/:protocol://:address", (request, response) => {
       });
     }
     else {
+      response.status(400);
       response.send(
       {
         original_url: origUrl, 
