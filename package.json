@@ -4,7 +4,8 @@
   "description": "Backend microservice that creates and stores a stortened url that can be used as an alias for the full URL",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+     "test": "mocha --timeout 10000"
   },
   "dependencies": {
     "express": "^4.12.4",
@@ -28,8 +29,5 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "mocha": "^3.2.0"
-  }
-  "scripts": {
-    "test": "mocha --timeout 10000"
   }
 }
