@@ -39,4 +39,20 @@ describe('/GET new shortened URL', () => {
             done();
             })
     })
+
+    /**
+     * Test the /GET new shortened URL for invalid original URL
+     */
+    it('it should return an error in the JSON response when URL is invalid', (done) => {
+        chai.request(server)
+            .get('/new/dfgt://ww.dd')
+            .end((err, res) => {
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('original_url').eql('dfgt://ww.dd');
+                res.body.should.have.property('error').eql('400 Bad Request');   
+            done();                
+            })
+    })
 })
+
