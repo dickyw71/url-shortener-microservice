@@ -48,7 +48,7 @@ app.get("/:urlHashVal", function (request, response) {
 
                 if(doc) {         //  Found the document 
                   console.log(doc.original_url);
-                  originalUrl = doc.original_url; 
+                  let originalUrl = doc.original_url; 
                   // redirect to original_url
                   response.redirect(originalUrl);
                 }
