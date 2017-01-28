@@ -19,21 +19,61 @@ var app = express();
 
 var urlShortenerSvc = require('./urlShortener.js');
 
+let host = "https://petal-recorder.gomix.me/";
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
 var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DB;
 
-console.log(uri);
-
-// mongodb.MongoClient.connect(uri, function(err, db) {
-//   if(err) throw err;
-// });
-
+/**
+ * /GET the originalUrl for the requested short_url
+ */
 app.get("/:urlHashVal", function (request, response) {
-  console.log('in get short url');
-  response.redirect("https://www.freecodecamp.com");
+  
+  let urlHash = request.params.urlHashVal;
+
+  if((urlHash > 0) && (urlHash < 10000)) {
+
+   mongodb.MongoClient.connect(uri, function(err, db) {
+        if(err) throw err;
+
+        // find URL for urlHashVal in DB
+        var shortenedUrls = db.collection('shortenedUrls');
+        shortenedUrls.findOne({
+            short_url: host + urlHash
+          }, {
+            original_url: 1     
+          }, function(err, doc) {
+
+                if(err) throw err;
+
+                if(doc) {         //  Found the document 
+                  console.log(doc.original_url);
+                  originalUrl = doc.original_url; 
+                  // redirect to original_url
+                  response.redirect(originalUrl);
+                }
+                else {
+                  // else return not found http status 404
+                  response.status(404);
+                  response.end();
+                }
+                
+                db.close(function(err) {
+                   if(err) throw err;
+                });
+        });
+   });
+  }
+  else {
+    // return bad request
+    response.status(400);
+    response.end();
+  }
 });
 
+/**
+ * /GET (create) a new short_url for the specified original_url
+ */
 app.get("/new/:protocol://:address", (request, response) => {
     
     var origUrl = request.params.protocol + "://" + request.params.address;
@@ -68,11 +108,11 @@ app.get("/new/:protocol://:address", (request, response) => {
               
                     console.log(result);
                   });
-
-                  db.close(function(err) {
-                      if(err) throw err;
-                  });
                 }
+
+                db.close(function(err) {
+                    if(err) throw err;
+                });
           });
       });
     }
