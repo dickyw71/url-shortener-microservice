@@ -19,10 +19,19 @@ var app = express();
 
 var urlShortenerSvc = require('./urlShortener.js');
 
-let host = "https://petal-recorder.gomix.me/";
+let host = "https://petal-recorder.gomix.me";
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
 var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DB;
+
+/**
+ * Default home page 
+ */
+app.set('views', __dirname + '/templates');
+app.set('view engine', 'jade');
+app.get('/', function(req, res) {
+    res.render('index', {host: host});
+});
 
 /**
  * /GET the originalUrl for the requested short_url
@@ -39,7 +48,7 @@ app.get("/:urlHashVal", function (request, response) {
         // find URL for urlHashVal in DB
         var shortenedUrls = db.collection('shortenedUrls');
         shortenedUrls.findOne({
-            short_url: host + urlHash
+            short_url: host + '/' + urlHash
           }, {
             original_url: 1     
           }, function(err, doc) {
