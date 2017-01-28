@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 /**
  * Test the /GET shortened URL route
  */
-describe('/GET shortened url, ', () => {
+describe('/GET original url using shortened url', () => {
     it('it should redirect me to my original link.', (done) => {
         chai.request(server)
             .get('/1691')
@@ -20,7 +20,25 @@ describe('/GET shortened url, ', () => {
                 res.should.have.status(200); 
             done();         
             })
-    })
+    });
+
+    it('it should return a bad request 400 when the hashCode is invalid', (done) => {
+        chai.request(server)
+            .get('/garbage')
+            .end((err, res) => {
+                res.should.have.status(400);
+            done();
+            })
+    });
+
+    it('it should return not found 404 when the url is not found in DB', (done) => {
+        chai.request(server)
+            .get('/1111')
+            .end((err, res) => {
+                res.should.have.status(404);
+            done();    
+            })
+    });
 })
 
 /**
