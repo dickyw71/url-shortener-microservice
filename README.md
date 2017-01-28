@@ -13,14 +13,14 @@
 - If found return info from DB in JSON - DONE
 - else
     - create random key value for original URL - DONE
-    - insert key and URL value into MongoDb
-    - return JSON with original URL and shortened URL 
+    - insert key and URL value into MongoDb - DONE
+    - return JSON with original URL and shortened URL - DONE
 
     { 
     "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" 
     }
 
-- Pass shortened URL parameter to Express Router
-- Validate shortened URL parameter
-- lookup record for shortened URL key in MongoDB
-- Re-direct response to original URL
+- Pass shortened URL parameter - DONE
+- Validate shortened URL parameter - DONE
+- lookup record for shortened URL key in MongoDB - DONE
+- Re-direct response to original URL - DONE
