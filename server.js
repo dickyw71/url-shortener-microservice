@@ -19,7 +19,7 @@ var app = express();
 
 var urlShortenerSvc = require('./urlShortener.js');
 
-let host = "https://petal-recorder.gomix.me";
+let host = "https://rocky-river-18158.herokuapp.com/";
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
 var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DB;
