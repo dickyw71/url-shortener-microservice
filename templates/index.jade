@@ -1,5 +1,33 @@
-h1 URL Shortener Microservice API
-a(href='https://github.com/dickyw71')
-    img(src='https://avatars.githubusercontent.com/u/13287196?v=3')
-p Usage: To create a shortened URL
-code #{host}/new/https://www.google.com
+doctype html
+html(lang="en")
+    head
+        style ul { list-style-type: none; } code { color: red; } body { font-family: Verdana; font-size: 13px; background: #eee; }
+
+    body  
+        h1 freeCodeCamp API project: URL Shortener microservice
+        p Developed by 
+            a(href='https://github.com/dickyw71') Richard Wheatley
+        a(href='https://github.com/dickyw71')
+            img(src='https://avatars.githubusercontent.com/u/13287196?v=3')
+
+        h4 Example creation usage: 
+        ul 
+            li
+                code #{host}/new/https://www.google.com
+            li
+                code #{host}/new/http://www.foo.com
+
+        h4 Returns JSON response
+        ul 
+            li
+                code { original_url: http://www.foo.com, short_url: #{host}/6600 }
+
+        h4 Usage:
+        ul
+            li
+                code #{host}/6600
+
+        h4 Redirects to the original URL
+        ul
+            li
+                code(style="color: red;") http://www.foo.com
