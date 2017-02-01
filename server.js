@@ -22,7 +22,7 @@ var urlShortenerSvc = require('./urlShortener.js');
 let host = "https://rocky-river-18158.herokuapp.com/";
 
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
-var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DB;
+var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DBPORT+'/'+process.env.DB;
 
 /**
  * Default home page 
@@ -138,7 +138,7 @@ app.get("/new/:protocol://:address", (request, response) => {
 
 
 // listen for requests :)
-var listener = app.listen("3000", function () {
+var listener = app.listen(process.env.PORT || "3000", function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
