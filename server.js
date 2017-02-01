@@ -24,6 +24,8 @@ let host = "https://rocky-river-18158.herokuapp.com";
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
 var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DBPORT+'/'+process.env.DB;
 
+console.log(uri);
+
 /**
  * Default home page 
  */
