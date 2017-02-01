@@ -1,9 +1,9 @@
-function shortenUrl(originalUrl) {
+function shortenUrl(originalUrl, host) {
   
     return  (
       { 
         original_url: originalUrl, 
-        short_url: "https://petal-recorder.gomix.me/" + Math.floor(1000 + Math.random() * 9000).toString()
+        short_url: host + "/" + Math.floor(1000 + Math.random() * 9000).toString()
       }
     )
 }
