@@ -54,6 +54,7 @@ describe('/GET new shortened URL', () => {
                 res.body.should.be.a('object');
                 res.body.should.have.property('original_url').eql('https://www.freecodecamp.com');
                 res.body.should.have.property('short_url');
+                res.body.should.not.have.property("_id");
             done();
             })
     })
