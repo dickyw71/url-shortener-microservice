@@ -15,7 +15,7 @@ chai.use(chaiHttp);
 describe('/GET original url using shortened url', () => {
     it('it should redirect me to my original link.', (done) => {
         chai.request(server)
-            .get('/1691')
+            .get('/3990')
             .end((err, res) => {
                 res.should.have.status(200); 
             done();         
