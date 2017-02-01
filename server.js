@@ -107,15 +107,15 @@ app.get("/new/:protocol://:address", (request, response) => {
                 if(err) throw err;
 
                 if(doc) {         //  Found the document 
-                  console.log(doc);
                   shortenedUrlJSON = doc; 
                   response.send(shortenedUrlJSON);
                 }
-                else {
-                  shortenedUrls.insert(urlShortenerSvc(origUrl), function(err, result) {
+                else {            //  Create new record and insert 
+                  shortenedUrlJSON = urlShortenerSvc(origUrl, host);
+                  shortenedUrls.insert(shortenedUrlJSON, function(err, result) {
                     if(err) throw err;
               
-                    console.log(result);
+                    response.send(shortenedUrlJSON);
                   });
                 }
 
