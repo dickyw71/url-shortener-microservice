@@ -24,8 +24,6 @@ let host = "https://rocky-river-18158.herokuapp.com";
 // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
 var uri = 'mongodb://'+process.env.DBUSER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.DBPORT+'/'+process.env.DB;
 
-console.log(uri);
-
 /**
  * Default home page 
  */
@@ -109,7 +107,8 @@ app.get("/new/:protocol://:address", (request, response) => {
                 if(err) throw err;
 
                 if(doc) {         //  Found the document 
-                  shortenedUrlJSON = doc; 
+                  shortenedUrlJSON.original_url = doc.original_url;
+                  shortenedUrlJSON.short_url = doc.short_url;
                   response.send(shortenedUrlJSON);
                 }
                 else {            //  Create new record and insert 
