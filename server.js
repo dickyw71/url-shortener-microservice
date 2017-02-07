@@ -100,8 +100,7 @@ app.get("/new/:protocol://:address", (request, response) => {
             original_url: origUrl
           }, {
             original_url: 1
-          , short_url: 1
-          , _id: 0       
+          , short_url: 1      
           }, function(err, doc) {
 
                 if(err) throw err;
