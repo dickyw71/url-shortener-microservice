@@ -1,14 +1,23 @@
 doctype html
 html(lang="en")
     head
-        style ul { list-style-type: none; } code { color: red; } body { font-family: Verdana; font-size: 13px; background: #eee; }
+        //-script(src="https://use.fontawesome.com/3c928783e1.js")
+        
+        link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet")
+
+        style ul { list-style-type: none; } code { color: red; } body { font-family: Verdana; font-size: 13px; background: #eee; } span { font-size: 26px;}
 
     body  
         h1 freeCodeCamp API project: URL Shortener microservice
         p Developed by 
-            a(href='https://github.com/dickyw71') Richard Wheatley
-        a(href='https://github.com/dickyw71')
+            a(href='https://www.freecodecamp.com/dickyw71') Richard Wheatley
+        a(href='https://www.freecodecamp.com/dickyw71')
             img(src='https://avatars.githubusercontent.com/u/13287196?v=3')
+
+        p
+            span
+                a(href="https://github.com/dickyw71/url-shortener-microservice" target="_blank")
+                    i(class="fa fa-github" aria-hidden="true")
 
         h4 Example creation usage: 
         ul 
