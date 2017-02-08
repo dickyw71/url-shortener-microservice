@@ -1,42 +1,61 @@
 doctype html
 html(lang="en")
     head
-        //-script(src="https://use.fontawesome.com/3c928783e1.js")
-        
+        style(type="text/css").
+            ul { 
+                list-style-type: none; 
+            } 
+            code { 
+                color: red; 
+            } 
+            body { 
+                font-family: Verdana; 
+                font-size: 13px; 
+                background: #eee; 
+            } 
+            span { 
+                font-size: 23px;
+            }
+
         link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet")
-
-        style ul { list-style-type: none; } code { color: red; } body { font-family: Verdana; font-size: 13px; background: #eee; } span { font-size: 26px;}
-
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet")
     body  
-        h1 freeCodeCamp API project: URL Shortener microservice
-        p Developed by 
-            a(href='https://www.freecodecamp.com/dickyw71') Richard Wheatley
-        a(href='https://www.freecodecamp.com/dickyw71')
-            img(src='https://avatars.githubusercontent.com/u/13287196?v=3')
+        div.container
+            .row
+                h1 freeCodeCamp API project: URL Shortener microservice
+            .row    
+                p Developed by 
+                    a(href='https://www.freecodecamp.com/dickyw71' target='_blank') Richard Wheatley
+            .row
+                a(href='https://www.freecodecamp.com/dickyw71' target='_blank')
+                    img( class='img-responsive img-rounded img-thumbnail' 
+                        src='https://avatars.githubusercontent.com/u/13287196?v=3')
+            .row
+                span
+                    a(href="https://github.com/dickyw71/url-shortener-microservice" target="_blank")
+                        i(class="fa fa-github" aria-hidden="true")
+                span
+                    a(href="https://twitter.com/rich_wheatley" target="_blank")
+                        i(class="fa fa-twitter" aria-hidden="true")
+            .row
+                h4 Example creation usage: 
+                ul 
+                    li
+                        code #{host}/new/https://www.google.com
+                    li
+                        code #{host}/new/http://www.foo.com
 
-        p
-            span
-                a(href="https://github.com/dickyw71/url-shortener-microservice" target="_blank")
-                    i(class="fa fa-github" aria-hidden="true")
+                h4 Returns JSON response
+                ul 
+                    li
+                        code { original_url: http://www.foo.com, short_url: #{host}/6600 }
 
-        h4 Example creation usage: 
-        ul 
-            li
-                code #{host}/new/https://www.google.com
-            li
-                code #{host}/new/http://www.foo.com
+                h4 Usage:
+                ul
+                    li
+                        code #{host}/6600
 
-        h4 Returns JSON response
-        ul 
-            li
-                code { original_url: http://www.foo.com, short_url: #{host}/6600 }
-
-        h4 Usage:
-        ul
-            li
-                code #{host}/6600
-
-        h4 Redirects to the original URL
-        ul
-            li
-                code http://www.foo.com
+                h4 Redirects to the original URL
+                ul
+                    li
+                        code http://www.foo.com
